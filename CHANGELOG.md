@@ -18,6 +18,11 @@ Versioning follows [Semantic Versioning](https://semver.org/).
   - `listAVDs()` replaced Unix `find *.ini` shell command with `std::filesystem::directory_iterator` (portable C++17)
   - `listSystemImages()` replaced Unix `find -mindepth 3 -maxdepth 3 -type d` with `std::filesystem` recursive iteration
   - `iniValue()` now strips trailing `\r` from CRLF line endings in Windows `.ini` files and normalises `\` → `/` in path values
+- **Windows: Terminal window flashing every 3 seconds while emulator boots**
+  - `waitForBoot()` called `_popen` every 3 seconds → a visible `cmd.exe` window flashed for each `adb` poll
+  - `stopEmulator()` used `std::system()` → caused a flash on emulator stop
+  - `startEmulator()` used `_popen` to launch the emulator → caused an extra flash on start
+  - Fix: replaced all `_popen`/`std::system` on Windows with `CreateProcess` + `CREATE_NO_WINDOW` + anonymous pipes
 - **About section in Settings showed wrong data**
   - App name corrected to `AppotaStacks`
   - Version now reads from `QCoreApplication::applicationVersion()` (was hardcoded `1.0.0`)
