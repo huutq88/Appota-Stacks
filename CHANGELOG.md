@@ -6,6 +6,33 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [1.0.4] — 2026-03-20
+
+### Added
+- **Full internationalization (i18n) — 5 languages: English 🇺🇸, Tiếng Việt 🇻🇳, 中文 🇨🇳, 한국어 🇰🇷, 日本語 🇯🇵**
+  - Language selector with country flag emojis in Settings → Other → Language
+  - Live language switching — all UI updates instantly without restart
+- **AVD Creation Wizard fully localized**
+  - Breadcrumb steps, form labels (Form Factor, Android Version, AVD Name, Orientation, Graphics, Configuration)
+  - Buttons: Next, Previous, Create AVD, Skip, Download, Retry
+- **Settings page fully localized** (General, Performance, Display, Other tabs)
+  - Nav labels, section headers, field labels, toggle labels
+  - CPU Cores & RAM dropdowns with "cores" unit and "Recommend" badge
+  - Resolution orientation tabs (Landscape, Portrait, Ultrawide, Custom)
+  - ADB Debug and Exit Behavior dropdown options
+  - Performance info notes, FPS section, Save/Cancel buttons
+- **AVD Manager fully localized**
+  - Start / Stop buttons and Running / Virtual status badges
+
+### Fixed
+- **New Device button** width now auto-expands to fit translated text (was clipping long strings)
+- **Start/Stop button** language reactivity fixed — direct `i18n.lang` dependency in binding
+
+### Changed
+- Removed `+` prefix from "New Device" and "Add Mapping" button labels (icon rendered separately)
+
+---
+
 ## [1.0.3] — 2026-03-18
 
 ### Added
